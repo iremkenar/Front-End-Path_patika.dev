@@ -1,0 +1,50 @@
+/*******General******/
+body {
+  text-align: center;
+}
+
+h1 {
+  color: darkolivegreen;
+  font-size: 3em;
+}
+h2 {
+  color: brown;
+  margin: 30px;
+}
+
+ul li {
+  list-style-type: none;
+  display: inline;
+  margin: 20px;
+}
+
+.location {
+  color: darkmagenta;
+  font-weight: bold;
+}
+
+#navbar {
+  color: rgb(0, 111, 139);
+}
+
+/*******Main Page******/
+
+#header-image {
+  width: 30%;
+}
+
+/*******About******/
+#about-us p {
+  font-size: 1.3em;
+}
+
+/*******Products******/
+
+.product-image {
+  height: 300px;
+  width: 350px;
+}
+
+.product-name {
+  font-size: 1.5em;
+}
