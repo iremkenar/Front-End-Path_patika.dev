@@ -17,8 +17,9 @@ function addClose(task) {
 function addNewTask() {
   const taskInputValue = newTask.value;
   if (taskInputValue === '') {
-    alert('Add something');
+    $('.error').toast('show');
   } else {
+    $('.success').toast('show');
     const newTaskEl = document.createElement('li');
     newTaskEl.innerHTML = taskInputValue;
     taskList.appendChild(newTaskEl);
