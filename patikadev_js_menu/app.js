@@ -74,8 +74,9 @@ const menu = [
 ];
 
 const menuBtn = document.querySelector('.btn-container');
+const menuSection = document.querySelector('.section-center');
 
-function createMenuBtn() {
+const createMenuBtn = () => {
   const categories = menu.map((food) => food.category);
   const uniqueCategories = ['All', ...new Set(categories)];
 
@@ -86,6 +87,31 @@ function createMenuBtn() {
     btn.innerHTML = item;
     menuBtn.appendChild(btn);
   }
-}
+};
 
+const listMenu = (menuList) => {
+  let displayMenuItem = menuList
+    .map((item) => {
+      return `<div class="menu-items col-lg-6 col-sm-12">
+        <img
+          src=${item.img}
+          alt=${item.title}
+          class="photo"
+        />
+        <div class="menu-info">
+          <div class="menu-title">
+            <h4>${item.title}</h4>
+            <h4 class="price">${item.price}</h4>
+          </div>
+          <div class="menu-text">
+            ${item.desc}
+          </div>
+        </div>
+      </div>`;
+    })
+    .join('');
+  menuSection.insertAdjacentHTML('afterbegin', displayMenuItem);
+};
+
+listMenu(menu);
 createMenuBtn();
