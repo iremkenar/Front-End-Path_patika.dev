@@ -21,6 +21,7 @@ function addNewTask() {
   } else {
     $('.success').toast('show');
     const newTaskEl = document.createElement('li');
+    localStorage.setItem('task', taskInputValue);
     newTaskEl.innerHTML = taskInputValue;
     taskList.appendChild(newTaskEl);
     addSpan(newTaskEl);
