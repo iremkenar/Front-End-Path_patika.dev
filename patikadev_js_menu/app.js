@@ -76,10 +76,9 @@ const menu = [
 const menuBtn = document.querySelector('.btn-container');
 const menuSection = document.querySelector('.section-center');
 
-const createMenuBtn = () => {
+const createFilterBtn = () => {
   const categories = menu.map((food) => food.category);
   const uniqueCategories = ['All', ...new Set(categories)];
-
   for (const item of uniqueCategories) {
     const btn = document.createElement('button');
     btn.classList.add('btn', 'btn-outline-dark', 'btn-item');
@@ -87,9 +86,27 @@ const createMenuBtn = () => {
     btn.innerHTML = item;
     menuBtn.appendChild(btn);
   }
+
+  const filterBtn = document.querySelectorAll('.btn-item');
+  filterBtn.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      menuSection.innerHTML = '';
+      const category = e.target.dataset.id;
+      const filteredMenu = menu.filter((menuItem) => {
+        if (menuItem.category === category) {
+          return menuItem;
+        }
+      });
+      if (category === 'All') {
+        listMenuItems(menu);
+      } else {
+        listMenuItems(filteredMenu);
+      }
+    });
+  });
 };
 
-const listMenu = (menuList) => {
+const listMenuItems = (menuList) => {
   let displayMenuItem = menuList
     .map((item) => {
       return `<div class="menu-items col-lg-6 col-sm-12">
@@ -113,5 +130,5 @@ const listMenu = (menuList) => {
   menuSection.insertAdjacentHTML('afterbegin', displayMenuItem);
 };
 
-listMenu(menu);
-createMenuBtn();
+listMenuItems(menu);
+createFilterBtn();
